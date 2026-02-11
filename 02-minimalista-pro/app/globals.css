@@ -1,0 +1,52 @@
+:root {
+  --bg: #f3f7fb;
+  --surface: #ffffff;
+  --surface-soft: #eef4fa;
+  --text: #0f1720;
+  --text-soft: #4a5a68;
+  --brand: #0f2740;
+  --brand-dark: #0b2035;
+  --accent: #00b8d9;
+  --line: #d6e0ea;
+  --ring: rgba(0, 184, 217, 0.3);
+  --shadow: 0 20px 60px rgba(15, 39, 64, 0.14);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body), sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

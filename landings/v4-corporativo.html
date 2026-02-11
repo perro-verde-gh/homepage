@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perro Verde | Soluciones Empresariales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --verde: #4CAF50;
+            --bosque: #2E7D32;
+            --gris-oscuro: #424242;
+            --gris: #757575;
+            --gris-claro: #F5F5F5;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gris-oscuro);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3 { font-family: 'Nunito', sans-serif; font-weight: 800; }
+        
+        /* Header corporativo */
+        header {
+            background: white;
+            border-bottom: 3px solid var(--verde);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-corp {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: var(--bosque);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--gris-oscuro);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--verde);
+        }
+        
+        .btn-nav {
+            background: var(--verde);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .btn-nav:hover {
+            background: var(--bosque);
+        }
+        
+        /* Hero corporativo */
+        .hero {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 8rem 3rem 6rem;
+        }
+        
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            color: var(--gris-oscuro);
+            margin-bottom: 2rem;
+        }
+        
+        .hero-text h1 .highlight {
+            color: var(--verde);
+            position: relative;
+        }
+        
+        .hero-text h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: var(--verde);
+            opacity: 0.2;
+        }
+        
+        .hero-text p {
+            font-size: 1.3rem;
+            color: var(--gris);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--verde);
+            font-family: 'Nunito', sans-serif;
+        }
+        
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--gris);
+            margin-top: 0.5rem;
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .btn {
+            padding: 1.2rem 3rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: var(--verde);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--bosque);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--bosque);
+            border: 2px solid var(--bosque);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--bosque);
+            color: white;
+        }
+        
+        /* Servicios profesionales */
+        .services {
+            padding: 8rem 3rem;
+            background: white;
+        }
+        
+        .section-header {
+            max-width: 800px;
+            margin: 0 auto 5rem;
+            text-align: center;
+        }
+        
+        .section-header h2 {
+            font-size: 3rem;
+            color: var(--gris-oscuro);
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--gris);
+        }
+        
+        .services-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+        
+        .service-box {
+            background: var(--gris-claro);
+            padding: 3.5rem;
+            border-left: 4px solid var(--verde);
+            transition: all 0.3s;
+        }
+        
+        .service-box:hover {
+            transform: translateX(10px);
+            box-shadow: -10px 10px 30px rgba(76, 175, 80, 0.1);
+        }
+        
+        .service-box h3 {
+            font-size: 2rem;
+            color: var(--bosque);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-box p {
+            font-size: 1.1rem;
+            color: var(--gris);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .service-features li {
+            padding: 0.5rem 0;
+            color: var(--gris-oscuro);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--verde);
+            font-weight: bold;
+        }
+        
+        /* Casos de éxito */
+        .cases {
+            background: var(--gris-claro);
+            padding: 8rem 3rem;
+        }
+        
+        .cases-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .case-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 8px;
+        }
+        
+        .case-card h4 {
+            font-size: 1.5rem;
+            color: var(--bosque);
+            margin-bottom: 1rem;
+        }
+        
+        .case-card p {
+            color: var(--gris);
+            margin-bottom: 1.5rem;
+        }
+        
+        .case-result {
+            background: #E8F5E9;
+            padding: 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--bosque);
+        }
+        
+        /* CTA final */
+        .final-cta {
+            background: var(--bosque);
+            color: white;
+            padding: 8rem 3rem;
+        }
+        
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+        
+        .cta-content p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+        }
+        
+        .btn-white {
+            background: white;
+            color: var(--bosque);
+        }
+        
+        .btn-white:hover {
+            background: var(--gris-claro);
+        }
+        
+        footer {
+            background: var(--gris-oscuro);
+            color: white;
+            padding: 3rem;
+            text-align: center;
+        }
+        
+        footer p {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo-corp">PERRO VERDE</a>
+            <ul class="nav-links">
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#cases">Casos</a></li>
+                <li><a href="#contact" class="btn-nav">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>Transformación digital <span class="highlight">con propósito</span></h1>
+                <p>Soluciones tecnológicas empresariales diseñadas para impulsar el crecimiento sostenible de tu organización.</p>
+                
+                <div class="cta-group">
+                    <a href="#contact" class="btn btn-primary">Agendar consultoría</a>
+                    <a href="#services" class="btn btn-secondary">Ver servicios</a>
+                </div>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Satisfacción cliente</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Proyectos exitosos</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Años experiencia</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2>Servicios empresariales</h2>
+            <p>Soluciones integrales para cada etapa de tu transformación digital</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-box">
+                <h3>Desarrollo Web & Mobile</h3>
+                <p>Aplicaciones empresariales escalables con tecnologías modernas y arquitecturas robustas.</p>
+                <ul class="service-features">
+                    <li>React, Next.js, Flutter</li>
+                    <li>Arquitectura microservicios</li>
+                    <li>APIs RESTful & GraphQL</li>
+                    <li>Progressive Web Apps</li>
+                </ul>
+            </div>
+            
+            <div class="service-box">
+                <h3>Software Empresarial</h3>
+                <p>Sistemas a medida para optimización de procesos y automatización de operaciones.</p>
+                <ul class="service-features">
+                    <li>ERP & CRM personalizados</li>
+                    <li>Business Intelligence</li>
+                    <li>Integraciones empresariales</li>
+                    <li>Workflow automation</li>
+                </ul>
+            </div>
+            
+            <div class="service-box">
+                <h3>Consultoría Digital</h3>
+                <p>Estrategia tecnológica alineada con objetivos de negocio y mejores prácticas.</p>
+                <ul class="service-features">
+                    <li>Auditoría tecnológica</li>
+                    <li>Roadmap digital</li>
+                    <li>Arquitectura de software</li>
+                    <li>Technology stack selection</li>
+                </ul>
+            </div>
+            
+            <div class="service-box">
+                <h3>Cloud & DevOps</h3>
+                <p>Infraestructura cloud escalable con automatización completa de despliegues.</p>
+                <ul class="service-features">
+                    <li>AWS, Azure, Google Cloud</li>
+                    <li>CI/CD pipelines</li>
+                    <li>Containerización (Docker/K8s)</li>
+                    <li>Monitoreo y alertas</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="cases" id="cases">
+        <div class="section-header">
+            <h2>Casos de éxito</h2>
+            <p>Resultados medibles en proyectos reales</p>
+        </div>
+        
+        <div class="cases-grid">
+            <div class="case-card">
+                <h4>Retail Nacional</h4>
+                <p>Plataforma e-commerce omnicanal para cadena con 50+ sucursales</p>
+                <div class="case-result">+180% ventas online en 6 meses</div>
+            </div>
+            
+            <div class="case-card">
+                <h4>Fintech Regional</h4>
+                <p>Sistema de pagos digitales con 99.9% uptime y procesamiento en tiempo real</p>
+                <div class="case-result">500K+ transacciones/mes</div>
+            </div>
+            
+            <div class="case-card">
+                <h4>Logística Internacional</h4>
+                <p>ERP personalizado con tracking en tiempo real y optimización de rutas</p>
+                <div class="case-result">-35% costos operativos</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta" id="contact">
+        <div class="cta-content">
+            <h2>Impulsemos tu transformación digital</h2>
+            <p>Conversemos sobre los desafíos de tu organización y cómo podemos ayudarte a superarlos con tecnología.</p>
+            <a href="/cdn-cgi/l/email-protection#c9aca7bdacbbb9bba0baac89b9acbbbba6bfacbbadace7aaa6a4" class="btn btn-white"><span class="__cf_email__" data-cfemail="0c696278697e7c7e657f694c7c697e7e637a697e6869226f6361">[email&#160;protected]</span></a>
+        </div>
+    </section>
+
+    <footer>
+        <p

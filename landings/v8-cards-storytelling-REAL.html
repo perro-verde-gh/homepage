@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perro Verde | Cards Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --verde: #4CAF50;
+            --bosque: #2E7D32;
+            --pasto: #81C784;
+            --crema: #FFF8E1;
+            --naranja: #FF9800;
+        }
+        
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: auto;
+        }
+        
+        .logo-text {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--verde-bosque);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F8F9FA;
+        }
+        
+        h1, h2, h3 { font-family: 'Nunito', sans-serif; font-weight: 800; }
+        
+        /* Header simple */
+        header {
+            background: white;
+            padding: 2rem 3rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-text {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--bosque);
+        }
+        
+        .btn-header {
+            background: var(--verde);
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-header:hover {
+            background: var(--bosque);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero card grande */
+        .hero {
+            padding: 4rem 3rem;
+        }
+        
+        .hero-card {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--verde), var(--bosque));
+            color: white;
+            padding: 6rem 5rem;
+            border-radius: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-card::before {
+            content: '🐕';
+            position: absolute;
+            font-size: 25rem;
+            opacity: 0.08;
+            top: 50%;
+            right: -5%;
+            transform: translateY(-50%);
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero-badge {
+            background: rgba(255, 255, 255, 0.2);
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+        
+        .hero-card h1 {
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-card p {
+            font-size: 1.5rem;
+            opacity: 0.95;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+        
+        .btn-hero {
+            background: white;
+            color: var(--bosque);
+            padding: 1.3rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        .btn-hero:hover {
+            background: var(--naranja);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        /* Cards grid de servicios */
+        .services {
+            padding: 6rem 3rem;
+        }
+        
+        .section-title-center {
+            text-align: center;
+            font-size: 3.5rem;
+            color: var(--bosque);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle-center {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #616161;
+            margin-bottom: 4rem;
+        }
+        
+        .cards-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .service-card-large {
+            background: white;
+            padding: 4rem 3rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            border: 3px solid transparent;
+        }
+        
+        .service-card-large:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(76, 175, 80, 0.15);
+            border-color: var(--verde);
+        }
+        
+        .card-icon-large {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--verde), var(--pasto));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .service-card-large h3 {
+            font-size: 2rem;
+            color: var(--bosque);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card-large p {
+            font-size: 1.15rem;
+            color: #616161;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .card-features {
+            list-style: none;
+        }
+        
+        .card-features li {
+            padding: 0.7rem 0;
+            color: var(--bosque);
+            font-weight: 500;
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .card-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--verde);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Valores con cards horizontales */
+        .valores {
+            padding: 6rem 3rem;
+            background: var(--crema);
+        }
+        
+        .valores-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .valor-card-horizontal {
+            background: white;
+            padding: 3rem;
+            border-radius: 24px;
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 3rem;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+        }
+        
+        .valor-card-horizontal:hover {
+            transform: translateX(15px);
+            box-shadow: 0 8px 30px rgba(76, 175, 80, 0.12);
+        }
+        
+        .valor-emoji-large {
+            font-size: 5rem;
+            text-align: center;
+        }
+        
+        .valor-card-horizontal h3 {
+            font-size: 2rem;
+            color: var(--bosque);
+            margin-bottom: 1rem;
+        }
+        
+        .valor-card-horizontal p {
+            font-size: 1.2rem;
+            color: #616161;
+            line-height: 1.7;
+        }
+        
+        /* CTA card grande */
+        .cta {
+            padding: 6rem 3rem;
+        }
+        
+        .cta-card {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 6rem 5rem;
+            border-radius: 32px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border: 4px solid var(--verde);
+        }
+        
+        .cta-card h2 {
+            font-size: 4rem;
+            color: var(--bosque);
+            margin-bottom: 2rem;
+        }
+        
+        .cta-card p {
+            font-size: 1.4rem;
+            color: #616161;
+            margin-bottom: 3rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        .btn-cta-primary {
+            background: var(--verde);
+            color: white;
+            padding: 1.5rem 4rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-cta-primary:hover {
+            background: var(--bosque);
+            transform: scale(1.05);
+        }
+        
+        .btn-cta-secondary {
+            background: transparent;
+            color: var(--verde);
+            padding: 1.5rem 4rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border: 3px solid var(--verde);
+            transition: all 0.3s;
+        }
+        
+        .btn-cta-secondary:hover {
+            background: var(--verde);
+            color: white;
+        }
+        
+        footer {
+            background: var(--bosque);
+            color: white;
+            padding: 3rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo-container">
+                <img src="../assets/logos/perro-verde-real.png" alt="Perro Verde" class="logo-img">
+                <span class="logo-text">PERRO VERDE</span>
+            </a>
+            <a href="#cta" class="btn-header">Empezar →</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-card">
+            <div class="hero-content">
+                <div class="hero-badge">🎾 Tu mejor amigo digital</div>
+                <h1>Software que funciona. Personas en las que confiás.</h1>
+                <p>Creamos soluciones digitales con la lealtad de un perro fiel y la frescura del mejor código.</p>
+                <a href="#cta" class="btn-hero">Empecemos a crear →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <h2 class="section-title-center">Lo que hacemos</h2>
+        <p class="section-subtitle-center">Servicios profesionales con trato cercano</p>
+        
+        <div class="cards-grid">
+            <div class="service-card-large">
+                <div class="card-icon-large">🌐</div>
+                <h3>Web & Mobile</h3>
+                <p>Aplicaciones modernas que tus usuarios van a amar usar.</p>
+                <ul class="card-features">
+                    <li>React & Next.js</li>
+                    <li>Flutter & React Native</li>
+                    <li>Progressive Web Apps</li>
+                    <li>APIs RESTful</li>
+                </ul>
+            </div>
+            
+            <div class="service-card-large">
+                <div class="card-icon-large">🏢</div>
+                <h3>Software Empresarial</h3>
+                <p>Sistemas que automatizan y organizan tu negocio.</p>
+                <ul class="card-features">
+                    <li>ERPs personalizados</li>
+                    <li>CRMs efectivos</li>
+                    <li>Business Intelligence</li>
+                    <li>Integraciones</li>
+                </ul>
+            </div>
+            
+            <div class="service-card-large">
+                <div class="card-icon-large">🎨</div>
+                <h3>Diseño UX/UI</h3>
+                <p>Interfaces que funcionan y se ven increíbles.</p>
+                <ul class="card-features">
+                    <li>User Research</li>
+                    <li>Wireframes & Prototipos</li>
+                    <li>Design Systems</li>
+                    <li>Testing de usabilidad</li>
+                </ul>
+            </div>
+            
+            <div class="service-card-large">
+                <div class="card-icon-large">☁️</div>
+                <h3>Cloud & DevOps</h3>
+                <p>Infraestructura que escala con tu negocio.</p>
+                <ul class="card-features">
+                    <li>AWS, Azure, GCP</li>
+                    <li>Docker & Kubernetes</li>
+                    <li>CI/CD pipelines</li>
+                    <li>Monitoreo 24/7</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="valores">
+        <div class="valores-container">
+            <h2 class="section-title-center">Nuestros valores</h2>
+            <p class="section-subtitle-center" style="margin-bottom: 4rem;">Lo que nos hace diferentes</p>
+            
+            <div class="valor-card-horizontal">
+                <div class="valor-emoji-large">🐾</div>
+                <div>
+                    <h3>Lealtad</h3>
+                    <p>Como un perro fiel, estamos contigo desde el día uno hasta después del lanzamiento. Tu éxito es nuestro éxito.</p>
+                </div>
+            </div>
+            
+            <div class="valor-card-horizontal">
+                <div class="valor-emoji-large">🌱</div>
+                <div>
+                    <h3>Frescura</h3>
+                    <p>Tecnologías modernas, ideas nuevas, código limpio. Siempre aprendiendo, siempre creciendo.</p>
+                </div>
+            </div>
+            
+            <div class="valor-card-horizontal">
+                <div class="valor-emoji-large">💚</div>
+                <div>
+                    <h3>Cercanía</h3>
+                    <p>Hablamos claro, sin jerga corporativa. Somos tus compañeros, no solo un proveedor más.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="cta">
+        <div class="cta-card">
+            <h2>¿Empezamos? 🎾</h2>
+            <p>Ladramos de emoción por conocer tu proyecto y crear algo increíble juntos.</p>
+            <div class="cta-buttons">
+                <a href="/cdn-cgi/l/email-protection#7b1314171a3b0b1e0909140d1e091f1e55181416" class="btn-cta-primary">Hablemos</a>
+                <a href="tel:+59899999999" class="btn-cta-secondary">Llamanos</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Perro Verde • Montevideo, Uruguay 🇺🇾</p>
+        <p style="margin-top: 0.5rem;">Código con 💚 y muchas cr

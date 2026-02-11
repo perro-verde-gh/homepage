@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perro Verde | Tu Historia Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --verde: #4CAF50;
+            --bosque: #2E7D32;
+            --pasto: #81C784;
+            --crema: #FFF8E1;
+            --naranja: #FF9800;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 { font-family: 'Nunito', sans-serif; font-weight: 800; }
+        
+        section {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            position: relative;
+        }
+        
+        /* Progress indicator */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--verde);
+            z-index: 9999;
+            transition: width 0.3s;
+        }
+        
+        /* Nav dots */
+        .nav-dots {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(46, 125, 50, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .nav-dot.active {
+            background: var(--verde);
+            transform: scale(1.5);
+        }
+        
+        /* Section 1: Hero */
+        .s1 {
+            background: linear-gradient(135deg, var(--crema), #E8F5E9);
+            text-align: center;
+        }
+        
+        .s1 h1 {
+            font-size: 6rem;
+            color: var(--bosque);
+            margin-bottom: 2rem;
+            line-height: 1;
+        }
+        
+        .s1 h1 span {
+            color: var(--verde);
+        }
+        
+        .s1 p {
+            font-size: 1.8rem;
+            color: #616161;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        
+        .scroll-hint {
+            font-size: 3rem;
+            color: var(--verde);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(20px); }
+        }
+        
+        /* Section 2: Problema */
+        .s2 {
+            background: white;
+        }
+        
+        .content-box {
+            max-width: 900px;
+        }
+        
+        .big-number {
+            font-size: 10rem;
+            font-weight: 800;
+            color: var(--verde);
+            opacity: 0.2;
+            font-family: 'Nunito', sans-serif;
+            line-height: 1;
+            margin-bottom: 2rem;
+        }
+        
+        .s2 h2 {
+            font-size: 4rem;
+            color: var(--bosque);
+            margin-bottom: 2rem;
+        }
+        
+        .s2 p {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            color: #616161;
+        }
+        
+        /* Section 3: Solución */
+        .s3 {
+            background: linear-gradient(135deg, var(--verde), var(--bosque));
+            color: white;
+        }
+        
+        .s3 h2 {
+            font-size: 4.5rem;
+            margin-bottom: 3rem;
+            color: white;
+        }
+        
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            max-width: 1000px;
+        }
+        
+        .feature-item {
+            text-align: left;
+        }
+        
+        .feature-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-item p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+        
+        /* Section 4: Proceso */
+        .s4 {
+            background: var(--crema);
+        }
+        
+        .process-steps {
+            display: flex;
+            gap: 2rem;
+            max-width: 1200px;
+        }
+        
+        .step {
+            flex: 1;
+            text-align: center;
+            padding: 3rem 2rem;
+            background: white;
+            border-radius: 16px;
+            position: relative;
+        }
+        
+        .step::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: var(--verde);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .step:nth-child(1)::before { content: '1'; }
+        .step:nth-child(2)::before { content: '2'; }
+        .step:nth-child(3)::before { content: '3'; }
+        
+        .step h3 {
+            font-size: 1.8rem;
+            color: var(--bosque);
+            margin: 2rem 0 1rem;
+        }
+        
+        .step p {
+            color: #616161;
+            line-height: 1.6;
+        }
+        
+        /* Section 5: CTA */
+        .s5 {
+            background: var(--bosque);
+            color: white;
+            text-align: center;
+        }
+        
+        .s5 h2 {
+            font-size: 5rem;
+            color: white;
+            margin-bottom: 2rem;
+        }
+        
+        .s5 p {
+            font-size: 1.8rem;
+            margin-bottom: 4rem;
+            opacity: 0.95;
+        }
+        
+        .btn-huge {
+            display: inline-block;
+            padding: 2rem 5rem;
+            background: white;
+            color: var(--bosque);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 800;
+            border-radius: 60px;
+            transition: all 0.3s;
+            font-family: 'Nunito', sans-serif;
+        }
+        
+        .btn-huge:hover {
+            background: var(--naranja);
+            color: white;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <div class="nav-dots">
+        <div class="nav-dot active" data-section="0"></div>
+        <div class="nav-dot" data-section="1"></div>
+        <div class="nav-dot" data-section="2"></div>
+        <div class="nav-dot" data-section="3"></div>
+        <div class="nav-dot" data-section="4"></div>
+    </div>
+
+    <section class="s1" data-section="0">
+        <div>
+            <h1>Hola,<br/>somos <span>Perro Verde</span></h1>
+            <p>Tu mejor amigo en el mundo digital.<br/>Scroll para conocer nuestra historia.</p>
+            <div class="scroll-hint">↓</div>
+        </div>
+    </section>
+
+    <section class="s2" data-section="1">
+        <div class="content-box">
+            <div class="big-number">01</div>
+            <h2>El problema</h2>
+            <p>
+                La tecnología puede ser complicada. Los proyectos de software 
+                a menudo fallan por mala comunicación, expectativas no alineadas, 
+                y falta de compromiso real del proveedor.
+            </p>
+            <p style="margin-top: 2rem;">
+                Muchas empresas sienten que sus desarrolladores "no los entienden" 
+                o que están solos en el proceso.
+            </p>
+        </div>
+    </section>
+
+    <section class="s3" data-section="2">
+        <div>
+            <h2>Nuestra solución: Ser compañeros</h2>
+            <div class="features-list">
+                <div class="feature-item">
+                    <h3>🐾 Lealtad</h3>
+                    <p>Estamos contigo desde el día uno hasta después del lanzamiento. Tu éxito es nuestro éxito.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h3>🌱 Código fresco</h3>
+                    <p>Tecnologías modernas, mejores prácticas, arquitecturas escalables. Siempre aprendiendo.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h3>💚 Comunicación clara</h3>
+                    <p>Sin jerga innecesaria. Hablamos tu idioma y explicamos todo en términos simples.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h3>🎾 Flexibilidad</h3>
+                    <p>Nos adaptamos a tu ritmo, tus procesos y tus necesidades. No al revés.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="s4" data-section="3">
+        <div>
+            <h2 style="text-align: center; font-size: 3.5rem; color: var(--bosque); margin-bottom: 4rem;">
+                Cómo trabajamos
+            </h2>
+            <div class="process-steps">
+                <div class="step">
+                    <h3>Escuchamos</h3>
+                    <p>Entendemos tu negocio, tus desafíos y tus objetivos. No asumimos nada.</p>
+                </div>
+                
+                <div class="step">
+                    <h3>Creamos juntos</h3>
+                    <p>Desarrollo iterativo con feedback constante. Ves el progreso cada semana.</p>
+                </div>
+                
+                <div class="step">
+                    <h3>Te acompañamos</h3>
+                    <p>Soporte post-lanzamiento, capacitación y evolución continua del producto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="s5" data-section="4">
+        <div>
+            <h2>¿Empezamos? 🎾</h2>
+            <p>Ladramos de emoción por conocer tu proyecto</p>
+            <a href="/cdn-cgi/l/email-protection#7e1611121f3e0e1b0c0c11081b0c1a1b501d1113" class="btn-huge"><span class="__cf_email__" data-cfemail="791116151839091c0b0b160f1c0b1d1c571a1614">[email&#160;protected]</span></a>
+            
+            <p style="margin-top: 4rem; font-size: 1rem; opacity: 0.7;">
+                © 2026 Perro Verde • Montevideo, Uruguay 🇺🇾<br/>
+                Código con 💚 y muchas croquetas
+            </p>
+        </div>
+    </section>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+        
+        // Nav dots
+        const sections = document.querySelectorAll('section');
+        const dots = document.querySelectorAll('.nav-dot');
+        
+        const updateActiveDot = () => {
+            let current = 0;
+            sections.forEach((section, i) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                    current = i;
+                }
+            });
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === current);
+            });
+        };
+        
+        window.addEventListener('scroll', updateActiveDot);
+        
+        dots.forEach(dot => {
+            

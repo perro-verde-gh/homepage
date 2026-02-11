@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perro Verde | Dark Edition 🌙</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #0D1117;
+            --dark-surface: #161B22;
+            --verde: #4CAF50;
+            --verde-glow: #81C784;
+            --text: #C9D1D9;
+            --text-dim: #8B949E;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--dark-bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 { font-family: 'Nunito', sans-serif; font-weight: 800; }
+        
+        /* Matrix rain effect */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .matrix-column {
+            position: absolute;
+            top: -100%;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--verde);
+            animation: matrix-fall linear infinite;
+        }
+        
+        @keyframes matrix-fall {
+            0% { top: -100%; }
+            100% { top: 100%; }
+        }
+        
+        /* Header terminal-style */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(22, 27, 34, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--verde);
+            z-index: 1000;
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .terminal-prompt {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--verde);
+            font-size: 1.2rem;
+        }
+        
+        .terminal-prompt::before {
+            content: '$ ';
+            color: var(--verde-glow);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a::before {
+            content: '> ';
+            color: var(--verde);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover::before {
+            opacity: 1;
+        }
+        
+        .nav-links a:hover {
+            color: var(--verde);
+        }
+        
+        /* Hero terminal */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .terminal-window {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--dark-surface);
+            border: 1px solid var(--verde);
+            border-radius: 8px;
+            box-shadow: 0 0 40px rgba(76, 175, 80, 0.2);
+        }
+        
+        .terminal-header {
+            background: rgba(76, 175, 80, 0.1);
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid var(--verde);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--verde);
+        }
+        
+        .terminal-content {
+            padding: 3rem;
+            font-size: 1rem;
+            line-height: 2;
+        }
+        
+        .terminal-line {
+            margin-bottom: 1rem;
+        }
+        
+        .terminal-line::before {
+            content: '→ ';
+            color: var(--verde-glow);
+        }
+        
+        .code-keyword {
+            color: var(--verde-glow);
+            font-weight: 600;
+        }
+        
+        .code-string {
+            color: #58A6FF;
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background: var(--verde);
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .hero-cta {
+            margin-top: 3rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .btn-terminal {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--verde);
+            border: 2px solid var(--verde);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-terminal:hover {
+            background: var(--verde);
+            color: var(--dark-bg);
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+        }
+        
+        /* Services grid */
+        .services {
+            padding: 6rem 2rem;
+            background: var(--dark-bg);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--verde);
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .section-title::before {
+            content: '# ';
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-dim);
+            margin-bottom: 4rem;
+        }
+        
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: var(--dark-surface);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            padding: 2.5rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--verde);
+            transition: height 0.3s;
+        }
+        
+        .service-card:hover::before {
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            border-color: var(--verde);
+            box-shadow: 0 0 30px rgba(76, 175, 80, 0.2);
+        }
+        
+        .service-card h3 {
+            color: var(--verde);
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.3rem;
+        }
+        
+        .service-card h3::before {
+            content: '// ';
+            color: var(--text-dim);
+        }
+        
+        .service-card p {
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+        
+        /* CTA */
+        .cta {
+            padding: 8rem 2rem;
+            background: var(--dark-surface);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .cta h2 {
+            font-size: 3rem;
+            color: var(--verde);
+            margin-bottom: 2rem;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            color: var(--text);
+            margin-bottom: 3rem;
+        }
+        
+        .email-link {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--verde-glow);
+            font-size: 1.3rem;
+            text-decoration: none;
+            padding: 1.5rem 3rem;
+            border: 2px solid var(--verde);
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .email-link:hover {
+            background: var(--verde);
+            color: var(--dark-bg);
+            box-shadow: 0 0 30px rgba(76, 175, 80, 0.5);
+        }
+        
+        footer {
+            background: var(--dark-bg);
+            color: var(--text-dim);
+            padding: 3rem;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(76, 175, 80, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-bg" id="matrix"></div>
+    
+    <header>
+        <nav>
+            <div class="terminal-prompt">PERRO VERDE</div>
+            <ul class="nav-links">
+                <li><a href="#services">services</a></li>
+                <li><a href="#contact">contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-dot"></div>
+                <div class="terminal-dot"></div>
+                <div class="terminal-dot"></div>
+            </div>
+            <div class="terminal-content">
+                <div class="terminal-line">
+                    <span class="code-keyword">const</span> perroVerde = {
+                </div>
+                <div class="terminal-line" style="padding-left: 2rem;">
+                    mision: <span class="code-string">"ser tu mejor amigo digital"</span>,
+                </div>
+                <div class="terminal-line" style="padding-left: 2rem;">
+                    stack: [<span class="code-string">"React"</span>, <span class="code-string">"Node"</span>, <span class="code-string">"Python"</span>, <span class="code-string">"Cloud"</span>],
+                </div>
+                <div class="terminal-line" style="padding-left: 2rem;">
+                    valores: [<span class="code-string">"lealtad"</span>, <span class="code-string">"código fresco"</span>, <span class="code-string">"cercanía"</span>],
+                </div>
+                <div class="terminal-line" style="padding-left: 2rem;">
+                    <span class="code-keyword">async</span> desarrollar(proyecto) {
+                </div>
+                <div class="terminal-line" style="padding-left: 4rem;">
+                    <span class="code-keyword">return await</span> excelencia(proyecto);
+                </div>
+                <div class="terminal-line" style="padding-left: 2rem;">
+                    }
+                </div>
+                <div class="terminal-line">};</div>
+                <div class="terminal-line" style="margin-top: 2rem;">
+                    <span class="code-keyword">console</span>.log(<span class="code-string">"🐕💚 Ladramos de emoción por tu proyecto"</span>);
+                    <span class="cursor"></span>
+                </div>
+                
+                <div class="hero-cta">
+                    <a href="#contact" class="btn-terminal">→ EJECUTAR PROYECTO</a>
+                    <a href="#services" class="btn-terminal">→ VER SERVICIOS</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2 class="section-title">servicios.list()</h2>
+        <p class="section-subtitle">// Tecnologías modernas, código limpio, resultados reales</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>web_mobile.dev</h3>
+                <p>React • Next.js • Flutter • Progressive Web Apps • APIs RESTful</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>enterprise.systems</h3>
+                <p>ERPs personalizados • CRMs • Business Intelligence • Integraciones</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>cloud.devops</h3>
+                <p>AWS • Azure • Docker • Kubernetes • CI/CD • Infrastructure as Code</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>design.ux_ui</h3>
+                <p>User Research • Wireframes • Prototipos • Design Systems • Figma</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="contact">
+        <h2>$ git commit -m "Empecemos"</h2>
+        <p>Código limpio. Comunicación clara. Compromiso real.</p>
+        <a href="/cdn-cgi/l/email-protection#187c7d6e58687d6a6a776e7d6a7c7d367b7775" class="email-link"><span class="__cf_email__" data-cfemail="6004051620100512120f16051204054e030f0d">[email&#160;protected]</span></a>
+    </section>
+
+    <footer>
+        <p>© 2026 Perro Verde • Built with 💚 and many commits</p>
+        <p style="margin-top: 0.5rem;">// Montevideo, Uruguay 🇺🇾</p>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Matrix rain effect
+        const matrix = document.getElementById('matrix');
+        const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+        
+        for (let i = 0; i < 20; i++) {
+            const column = document.createElement('div');
+            column.className = 'matrix-column';
+            column.style.left = Math.random() * 100 + '%';
+            column.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            column.style.animationDelay = Math.random() * 2 + 's';
+            
+            let text = '';
+            for

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perro Verde | Software Profesional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --verde: #4CAF50;
+            --bosque: #2E7D32;
+            --blanco: #FFFFFF;
+            --gris-claro: #F5F5F5;
+            --gris: #616161;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gris);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3 { font-family: 'Nunito', sans-serif; font-weight: 800; color: var(--bosque); }
+        
+        /* Header minimalista */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            border-bottom: 1px solid #E0E0E0;
+            z-index: 1000;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--bosque);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--gris);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--verde);
+        }
+        
+        /* Hero limpio */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 3rem 4rem;
+            background: white;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .hero h1 span {
+            color: var(--verde);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            color: var(--gris);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .btn {
+            padding: 1.2rem 3rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-size: 1.05rem;
+        }
+        
+        .btn-primary {
+            background: var(--verde);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--bosque);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--verde);
+            border: 2px solid var(--verde);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--verde);
+            color: white;
+        }
+        
+        /* Stats */
+        .stats {
+            background: var(--gris-claro);
+            padding: 4rem 3rem;
+        }
+        
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--verde);
+            font-family: 'Nunito', sans-serif;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--gris);
+            margin-top: 0.5rem;
+        }
+        
+        /* Services grid */
+        .services {
+            padding: 8rem 3rem;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+        
+        .service-item {
+            padding: 3rem;
+            border: 1px solid #E0E0E0;
+            transition: all 0.3s;
+        }
+        
+        .service-item:hover {
+            border-color: var(--verde);
+            box-shadow: 0 8px 24px rgba(76, 175, 80, 0.1);
+        }
+        
+        .service-item h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-item p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        /* CTA final */
+        .final-cta {
+            background: var(--bosque);
+            color: white;
+            padding: 8rem 3rem;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .final-cta p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+        }
+        
+        .btn-light {
+            background: white;
+            color: var(--bosque);
+        }
+        
+        .btn-light:hover {
+            background: var(--gris-claro);
+        }
+        
+        footer {
+            background: white;
+            border-top: 1px solid #E0E0E0;
+            padding: 3rem;
+            text-align: center;
+            color: var(--gris);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">PERRO VERDE</a>
+            <ul class="nav-links">
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Software profesional.<br/><span>Trato cercano.</span></h1>
+            <p>Desarrollamos soluciones digitales con la precisión de expertos y la dedicación de un compañero leal.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Iniciar proyecto</a>
+                <a href="#services" class="btn btn-secondary">Ver servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-grid">
+            <div>
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Proyectos</div>
+            </div>
+            <div>
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Satisfacción</div>
+            </div>
+            <div>
+                <div class="stat-number">5★</div>
+                <div class="stat-label">Rating</div>
+            </div>
+            <div>
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Soporte</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2 class="section-title">Servicios</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <h3>Desarrollo Web & Mobile</h3>
+                <p>Aplicaciones modernas con React, Next.js y Flutter. Performance y experiencia de usuario excepcional.</p>
+            </div>
+            
+            <div class="service-item">
+                <h3>Software Empresarial</h3>
+                <p>ERPs, CRMs y sistemas a medida. Automatización de procesos y optimización de operaciones.</p>
+            </div>
+            
+            <div class="service-item">
+                <h3>Diseño UX/UI</h3>
+                <p>Interfaces intuitivas respaldadas por investigación de usuarios y mejores prácticas de diseño.</p>
+            </div>
+            
+            <div class="service-item">
+                <h3>Cloud & DevOps</h3>
+                <p>Infraestructura escalable en AWS, Azure y Google Cloud. CI/CD y automatización completa.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta" id="contact">
+        <h2>Trabajemos juntos</h2>
+        <p>Conversemos sobre tu proyecto y cómo podemos ayudarte a alcanzar tus objetivos.</p>
+        <a href="/cdn-cgi/l/email-protection#781017141938081d0a0a170e1d0a1c1d561b1715" class="btn btn-light"><span class="__cf_email__" data-cfemail="96fef9faf7d6e6f3e4e4f9e0f3e4f2f3b8f5f9fb">[email&#160;prote

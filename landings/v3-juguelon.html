@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perro Verde 🐕💚 | ¡A Jugar!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --verde: #4CAF50;
+            --bosque: #2E7D32;
+            --naranja: #FF9800;
+            --crema: #FFF8E1;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--crema);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 { font-family: 'Nunito', sans-serif; font-weight: 800; }
+        
+        /* Huellas animadas flotantes */
+        .paw-float {
+            position: fixed;
+            font-size: 30px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 9999;
+            animation: paw-rise 3s ease-out;
+        }
+        
+        @keyframes paw-rise {
+            0% { opacity: 0; transform: translateY(0) rotate(0deg); }
+            20% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-200px) rotate(360deg); }
+        }
+        
+        /* Header juguetón */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 4px 20px rgba(76, 175, 80, 0.1);
+            z-index: 1000;
+            transform: translateY(0);
+            transition: transform 0.3s;
+        }
+        
+        header.bounce {
+            animation: header-bounce 0.5s;
+        }
+        
+        @keyframes header-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            color: var(--bosque);
+            text-decoration: none;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            transition: transform 0.3s;
+        }
+        
+        .logo:hover {
+            transform: scale(1.1) rotate(-5deg);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--bosque);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--naranja);
+            transform: translateY(-3px);
+        }
+        
+        /* Hero con pelota rebotando */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            background: linear-gradient(135deg, var(--crema), #E8F5E9);
+        }
+        
+        .ball {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: var(--naranja);
+            border-radius: 50%;
+            top: 20%;
+            right: 10%;
+            animation: bounce-ball 2s ease-in-out infinite;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 152, 0, 0.3);
+        }
+        
+        .ball:hover {
+            animation-play-state: paused;
+            transform: scale(1.2);
+        }
+        
+        @keyframes bounce-ball {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-100px); }
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .badge-playful {
+            display: inline-block;
+            background: var(--naranja);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            animation: wiggle 1s ease-in-out infinite;
+        }
+        
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+        
+        .hero h1 {
+            font-size: 5rem;
+            color: var(--bosque);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        
+        .hero h1 span {
+            color: var(--verde);
+            animation: color-pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes color-pulse {
+            0%, 100% { color: var(--verde); }
+            50% { color: var(--naranja); }
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            color: #616161;
+        }
+        
+        .btn-playful {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            font-family: 'Nunito', sans-serif;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: var(--verde);
+            color: white;
+            box-shadow: 0 8px 24px rgba(76, 175, 80, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: var(--bosque);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 32px rgba(46, 125, 50, 0.4);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+        
+        /* Cards con hover divertido */
+        .services {
+            padding: 6rem 2rem;
+            background: white;
+        }
+        
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: var(--crema);
+            padding: 3rem 2rem;
+            border-radius: 30px;
+            text-align: center;
+            transition: all 0.4s;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .service-card::before {
+            content: '🐾';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2rem;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover::before {
+            opacity: 0.3;
+            transform: rotate(20deg);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-20px) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(76, 175, 80, 0.2);
+            background: linear-gradient(135deg, #E8F5E9, var(--crema));
+        }
+        
+        .service-emoji {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 1.5rem;
+            animation: emoji-float 3s ease-in-out infinite;
+        }
+        
+        .service-card:nth-child(1) .service-emoji { animation-delay: 0s; }
+        .service-card:nth-child(2) .service-emoji { animation-delay: 0.5s; }
+        .service-card:nth-child(3) .service-emoji { animation-delay: 1s; }
+        .service-card:nth-child(4) .service-emoji { animation-delay: 1.5s; }
+        
+        @keyframes emoji-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .service-card h3 {
+            font-size: 1.6rem;
+            color: var(--bosque);
+            margin-bottom: 1rem;
+        }
+        
+        /* CTA con confetti effect */
+        .cta {
+            background: linear-gradient(135deg, var(--verde), var(--bosque));
+            padding: 8rem 2rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta h2 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cta p {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .btn-white {
+            background: white;
+            color: var(--bosque);
+        }
+        
+        .btn-white:hover {
+            background: var(--naranja);
+            color: white;
+        }
+        
+        footer {
+            background: var(--bosque);
+            color: white;
+            padding: 3rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">🐕 PERRO VERDE</a>
+            <ul class="nav-links">
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="ball" id="ball" title="¡Haz clic en la pelota! 🎾"></div>
+        
+        <div class="hero-content">
+            <div class="badge-playful">🎾 ¡Listos para jugar!</div>
+            <h1>El trabajo puede ser <span>divertido</span></h1>
+            <p>
+                Software profesional con actitud juguetona.<br/>
+                Porque crear código increíble no tiene que ser aburrido.
+            </p>
+            <a href="#contact" class="btn-playful btn-primary" id="ctaBtn">
+                ¡Ladremos juntos! 🐕💚
+            </a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-emoji">🌐</span>
+                <h3>Web & Mobile</h3>
+                <p>Apps que corren más rápido que un greyhound persiguiendo un conejo (digital).</p>
+            </div>
+            
+            <div class="service-card">
+                <span class="service-emoji">🏢</span>
+                <h3>Software Empresarial</h3>
+                <p>Sistemas que organizan mejor que un border collie muy motivado.</p>
+            </div>
+            
+            <div class="service-card">
+                <span class="service-emoji">🎨</span>
+                <h3>Diseño UX/UI</h3>
+                <p>Interfaces tan intuitivas que hasta un cachorro las usaría.</p>
+            </div>
+            
+            <div class="service-card">
+                <span class="service-emoji">☁️</span>
+                <h3>Cloud & DevOps</h3>
+                <p>Infraestructura que nunca duerme (como un perro guardián).</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="contact">
+        <h2>¿Jugamos? 🎾</h2>
+        <p>Trae tu proyecto, nosotros ponemos la energía y el código fresco.</p>
+        <a href="/cdn-cgi/l/email-protection#385057545978485d4a4a574e5d4a5c5d165b5755" class="btn-playful btn-white">
+            <span class="__cf_email__" data-cfemail="a0c8cfccc1e0d0c5d2d2cfd6c5d2c4c58ec3cfcd">[email&#160;protected]</span>
+        </a>
+    </section>
+
+    <footer>
+        <p>© 2026 Perro Verde • Hecho con 💚 y muchas croquetas</p>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Huellas al mover el mouse
+        let pawTimeout;
+        document.addEventListener('mousemove', (e) => {
+            clearTimeout(pawTimeout);
+            pawTimeout = setTimeout(() => {
+                if (Math.random() > 0.7) {
+                    const paw = document.createElement('div');
+                    paw.className = 'paw-float';
+                    paw.textContent = '🐾';
+                    paw.style.left = e.pageX + 'px';
+                    paw.style.top = e.pageY + 'px';
+                    document.body.appendChild(paw);
+                    setTimeout(() => paw.remove(), 3000);
+                }
+            }, 100);
+        });
+        
+        // Pelota interactiva
+        const ball = document.getElementById('ball');
+        ball.addEventListener('click', () => {
+            ball.style.animation = 'none';
+            setTimeout(() => {
+                ball.style.animation = 'bounce-ball 2s ease-in-out infinite';
+            }, 10);
+            
+            // Crear huellas alrededor
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const paw = document.createElement('div');
+                    paw.className = 'paw-float';
+                    paw.textContent = '🐾';
+                    paw.style.left = (ball.offsetLeft + Math.random() * 100 - 50) + 'px';
+                    paw.style.top = (ball.offsetTop + Math.random() * 100 - 50) + 'px';
+                    document.body.appendChild(paw);
+                    setTimeout(() => paw.remove(), 3000);
+                }, i * 100);
+            }
+        });
+        
+        // Header bounce on scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (Math.abs(currentScroll - lastScroll) > 100) {
+                document.getElementById('header').classList.add('bounce');
+                setTimeout(() => {
+                    document.getElementById('header').classList.remove('bounce');
+                }, 500);
+                lastScroll = currentScroll;
+            }
+        });
+        
+        // CTA button click effect
+        document.getElementById('ctaBtn').addEventListener('click', function(e) {
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const paw = document.createElement('div');
+                    paw.className = 'paw-float';
+                    paw.textContent = ['🐾', '💚', '🎾'][Math.floor(Math.random() * 3)];
+                    paw.style.left = (e.pageX + Math.random() * 200 - 100) + 'px';
+                    paw.style.top

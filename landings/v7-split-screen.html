@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perro Verde | Split Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --verde: #4CAF50;
+            --bosque: #2E7D32;
+            --crema: #FFF8E1;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 { font-family: 'Nunito', sans-serif; font-weight: 800; }
+        
+        /* Split hero */
+        .hero {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 45% 55%;
+        }
+        
+        .hero-left {
+            background: var(--bosque);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-left::before {
+            content: '🐕';
+            position: absolute;
+            font-size: 30rem;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .hero-left-content {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero-left h1 {
+            font-size: 5rem;
+            line-height: 1;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-left p {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+        
+        .hero-right {
+            background: var(--crema);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+        }
+        
+        .hero-form {
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .hero-form h2 {
+            font-size: 2.5rem;
+            color: var(--bosque);
+            margin-bottom: 1rem;
+        }
+        
+        .hero-form p {
+            color: #616161;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--bosque);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--verde);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .btn-submit {
+            width: 100%;
+            padding: 1.3rem;
+            background: var(--verde);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Nunito', sans-serif;
+        }
+        
+        .btn-submit:hover {
+            background: var(--bosque);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(46, 125, 50, 0.3);
+        }
+        
+        /* Benefits section */
+        .benefits {
+            display: grid;
+            grid-template-columns: 40% 60%;
+        }
+        
+        .benefits-left {
+            background: white;
+            padding: 6rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .benefits-left h2 {
+            font-size: 3rem;
+            color: var(--bosque);
+            margin-bottom: 2rem;
+        }
+        
+        .benefit-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            align-items: start;
+        }
+        
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--verde);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+        
+        .benefit-text h3 {
+            font-size: 1.4rem;
+            color: var(--bosque);
+            margin-bottom: 0.5rem;
+        }
+        
+        .benefit-text p {
+            color: #616161;
+            line-height: 1.6;
+        }
+        
+        .benefits-right {
+            background: linear-gradient(135deg, var(--verde), var(--bosque));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+        
+        .stat-box {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 5rem;
+            font-weight: 800;
+            font-family: 'Nunito', sans-serif;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            opacity: 0.95;
+        }
+        
+        /* Process section */
+        .process {
+            display: grid;
+            grid-template-columns: 55% 45%;
+        }
+        
+        .process-left {
+            background: var(--crema);
+            padding: 6rem 4rem;
+        }
+        
+        .process-left h2 {
+            font-size: 3rem;
+            color: var(--bosque);
+            margin-bottom: 3rem;
+        }
+        
+        .process-step {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--verde);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            font-family: 'Nunito', sans-serif;
+            flex-shrink: 0;
+        }
+        
+        .step-content h3 {
+            font-size: 1.6rem;
+            color: var(--bosque);
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-content p {
+            color: #616161;
+            line-height: 1.6;
+        }
+        
+        .process-right {
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+        }
+        
+        .testimonial {
+            max-width: 400px;
+        }
+        
+        .quote-mark {
+            font-size: 6rem;
+            color: var(--verde);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-text {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            color: #424242;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--bosque);
+        }
+        
+        .testimonial-role {
+            color: #616161;
+            font-size: 0.95rem;
+        }
+        
+        footer {
+            background: var(--bosque);
+            color: white;
+            padding: 3rem;
+            text-align: center;
+        }
+        
+        footer p { opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-left">
+            <div class="hero-left-content">
+                <h1>Tu mejor<br/>amigo<br/>digital</h1>
+                <p>
+                    Software con lealtad de perro<br/>
+                    y código verde fresco.
+                </p>
+            </div>
+        </div>
+        
+        <div class="hero-right">
+            <form class="hero-form">
+                <h2>Empecemos 🎾</h2>
+                <p>Cuéntanos sobre tu proyecto</p>
+                
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" placeholder="¿Cómo te llamás?">
+                </div>
+                
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="tu@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label>Tipo de proyecto</label>
+                    <select>
+                        <option>Web App</option>
+                        <option>Mobile App</option>
+                        <option>Sistema Empresarial</option>
+                        <option>E-commerce</option>
+                        <option>Otro</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Cuéntanos más</label>
+                    <textarea placeholder="¿Qué necesitás?"></textarea>
+                </div>
+                
+                <button type="submit" class="btn-submit">Enviar proyecto →</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <div class="benefits-left">
+            <h2>Por qué Perro Verde</h2>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">🐾</div>
+                <div class="benefit-text">
+                    <h3>Lealtad</h3>
+                    <p>Estamos contigo desde el día uno hasta el éxito. Tu proyecto es nuestro proyecto.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">🌱</div>
+                <div class="benefit-text">
+                    <h3>Código fresco</h3>
+                    <p>Tecnologías modernas, arquitecturas escalables, mejores prácticas siempre.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">💚</div>
+                <div class="benefit-text">
+                    <h3>Comunicación clara</h3>
+                    <p>Sin jerga. Hablamos tu idioma y explicamos todo de forma simple.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="benefits-right">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Proyectos</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Satisfacción</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Años</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Soporte</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process">
+        <div class="process-left">
+            <h2>Cómo trabajamos</h2>
+            
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Escuchamos</h3>
+                    <p>Entendemos tu negocio, desafíos y objetivos. Nada de asumir.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Creamos juntos</h3>
+                    <p>Desarrollo iterativo. Ves progreso cada semana. Feedback constante.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Te acompañamos</h3>
+                    <p>Soporte post-lanzamiento, capacitación, evolución continua.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="process-right">
+            <div class="testimonial">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">
+                    Trabajar con Perro Verde fue como tener un compañero 
+                    que realmente entendía nuestro negocio. Nunca tuvimos 
+                    que explicar algo dos veces.
+                </p>
+                <div class="testimonial-author">María Rodríguez</div>
+                <div class="testimonial-role">CEO, TechStart</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Perro Verde • Montevideo, Uruguay 🇺🇾</p>
+        <p style="margin-top: 0.5rem;">Código con 💚 y muchas croquetas</p>
+    </footer>
+</body>
+</html>
