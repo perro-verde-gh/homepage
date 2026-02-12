@@ -19,12 +19,12 @@ const highlights = [
 const capabilities = [
   {
     title: 'Web de alto rendimiento',
-    body: 'Sitios y plataformas con Core Web Vitals cuidados para convertir desde el primer scroll.',
+    body: 'Te damos los indicadores para optimizar tu productividad',
     tag: 'Performance',
   },
   {
     title: 'Producto digital end-to-end',
-    body: 'Desde discovery y UX hasta desarrollo y lanzamiento con backlog priorizado por negocio.',
+    body: 'Acompañamiento desde que nos contactas hasta que entregamos tu producto',
     tag: 'Product',
   },
   {
@@ -41,19 +41,19 @@ const capabilities = [
 
 const process = [
   {
-    step: 'Discovery',
-    title: 'Descubrimiento',
-    body: 'Alineamos objetivos, usuarios y KPIs para definir la mejor estrategia de producto.',
-  },
-  {
-    step: 'Design + Build',
-    title: 'Diseno y construccion',
-    body: 'Creamos prototipos, validamos rapido y desarrollamos en sprints con feedback semanal.',
+    step: 'Visibilidad',
+    title: '',
+    body: 'Vas a poder ir viendo los avances de tu proyecto',
   },
   {
     step: 'Launch + Iterate',
     title: 'Lanzamiento y mejora',
     body: 'Publicamos, medimos impacto y optimizamos conversion con mejoras continuas.',
+  },
+  {
+    step: 'Launch care',
+    title: '',
+    body: 'Brindamos soporte tecnico post entrega durante un periodo de tiempo para que te sientas mas comodo en las primeras etapas de uso del producto.',
   },
 ]
 
@@ -114,7 +114,7 @@ export default function Home() {
             <li><a href="#casos">Casos</a></li>
             <li><a href="#faq">FAQ</a></li>
           </ul>
-          <a href="#contacto" className={styles.navCta}>Agendar llamada</a>
+          <a href="#contacto" className={styles.navCta}>Contactanos</a>
         </nav>
       </header>
 
@@ -170,13 +170,13 @@ export default function Home() {
       <section id="proceso" className={styles.process}>
         <div className={styles.sectionHead}>
           <p>Proceso</p>
-          <h2>Trabajamos en ciclos cortos con visibilidad total</h2>
+          <h2>Transparencia en la construccion</h2>
         </div>
         <div className={styles.processGrid}>
           {process.map((item) => (
             <article key={item.step} className={styles.processCard}>
               <span>{item.step}</span>
-              <h3>{item.title}</h3>
+              {item.title ? <h3>{item.title}</h3> : null}
               <p>{item.body}</p>
             </article>
           ))}
