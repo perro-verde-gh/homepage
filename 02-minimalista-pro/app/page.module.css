@@ -58,11 +58,12 @@
   font-size: 0.95rem;
   color: var(--text-soft);
   font-weight: 700;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .navLinks a:hover {
   color: var(--brand);
+  transform: translateY(-1px);
 }
 
 .navCta {
@@ -73,6 +74,12 @@
   font-weight: 700;
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 10px 24px rgba(15, 39, 64, 0.24);
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.navCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(15, 39, 64, 0.28);
 }
 
 .hero {
@@ -151,6 +158,22 @@
   background: #fff;
 }
 
+.btnPrimary:hover,
+.btnSecondary:hover,
+.btnWhite:hover,
+.btnGhost:hover {
+  transform: translateY(-2px);
+}
+
+.btnPrimary:hover {
+  box-shadow: 0 18px 32px rgba(15, 39, 64, 0.28);
+}
+
+.btnSecondary:hover {
+  box-shadow: 0 14px 28px rgba(15, 39, 64, 0.16);
+  border-color: rgba(15, 39, 64, 0.36);
+}
+
 .heroPanel {
   position: relative;
   overflow: hidden;
@@ -215,6 +238,7 @@
   background: #fff;
   padding: 0.95rem 1rem;
   box-shadow: 0 10px 24px rgba(15, 39, 64, 0.07);
+  transition: transform 0.24s ease, box-shadow 0.28s ease, border-color 0.24s ease;
 }
 
 .trustItem strong {
@@ -275,6 +299,7 @@
   border: 1px solid rgba(15, 39, 64, 0.15);
   background: #fff;
   padding: 1.2rem;
+  transition: transform 0.24s ease, box-shadow 0.3s ease, border-color 0.24s ease;
 }
 
 .bentoCard:nth-child(1),
@@ -313,6 +338,7 @@
   border: 1px solid rgba(15, 39, 64, 0.16);
   background: #fff;
   padding: 1.2rem;
+  transition: transform 0.24s ease, box-shadow 0.3s ease, border-color 0.24s ease;
 }
 
 .processCard span {
@@ -334,6 +360,17 @@
   line-height: 1.62;
 }
 
+.trustItem:hover,
+.bentoCard:hover,
+.processCard:hover,
+.projectCard:hover,
+.testimonialCard:hover,
+.faqList details:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(15, 39, 64, 0.16);
+  border-color: rgba(15, 39, 64, 0.24);
+}
+
 .projectsGrid {
   margin-top: 1.4rem;
   display: grid;
@@ -348,6 +385,7 @@
   color: var(--text);
   padding: 1.25rem;
   box-shadow: 0 10px 24px rgba(15, 39, 64, 0.08);
+  transition: transform 0.24s ease, box-shadow 0.3s ease, border-color 0.24s ease;
 }
 
 .projectCard h3 {
@@ -380,6 +418,7 @@
   border: 1px solid rgba(15, 39, 64, 0.16);
   background: #fff;
   padding: 1.15rem;
+  transition: transform 0.24s ease, box-shadow 0.3s ease, border-color 0.24s ease;
 }
 
 .testimonialCard div {
@@ -421,6 +460,7 @@
   border: 1px solid rgba(15, 39, 64, 0.16);
   background: #fff;
   padding: 1rem 1.1rem;
+  transition: transform 0.22s ease, box-shadow 0.26s ease, border-color 0.22s ease;
 }
 
 .faqList summary {
@@ -470,12 +510,22 @@
 .btnWhite {
   background: #fff;
   color: var(--brand);
+  border: 1px solid rgba(15, 39, 64, 0.1);
 }
 
 .btnGhost {
   background: rgba(255, 255, 255, 0.16);
   color: #f5fbff;
   border: 1px solid rgba(255, 255, 255, 0.42);
+}
+
+.btnGhost:hover {
+  box-shadow: 0 16px 34px rgba(15, 39, 64, 0.18);
+}
+
+.btnWhite:hover {
+  box-shadow: 0 14px 30px rgba(15, 39, 64, 0.16);
+  border-color: rgba(15, 39, 64, 0.18);
 }
 
 .footer {

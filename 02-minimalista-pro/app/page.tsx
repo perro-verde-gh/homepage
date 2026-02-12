@@ -47,7 +47,7 @@ const process = [
   },
   {
     step: 'Launch + Iterate',
-    title: 'Lanzamiento y mejora',
+    title: '',
     body: 'Publicamos, medimos impacto y optimizamos conversion con mejoras continuas.',
   },
   {
@@ -59,19 +59,24 @@ const process = [
 
 const projects = [
   {
-    name: 'Plataforma B2B de cotizacion',
-    result: '+41% leads calificados',
-    detail: 'Nuevo funnel, segmentacion de formularios y automatizacion comercial.',
+    name: 'Sector agropecuario',
+    result: 'Ganaderia y agricultura',
+    detail: 'Soluciones para trazabilidad, reportes y eficiencia en campo.',
   },
   {
-    name: 'E-commerce de tickets premium',
-    result: '+33% checkout completado',
-    detail: 'Rediseno UX en pasos criticos y reduccion de friccion en mobile.',
+    name: 'E-commerce',
+    result: 'Implementaciones headless end to end',
+    detail: 'Arquitecturas SaaS para crecer sin friccion.',
   },
   {
-    name: 'SaaS interno para operaciones',
-    result: '-52% tiempo operativo',
-    detail: 'Panel unificado de datos, alertas y tareas automatizadas por prioridad.',
+    name: 'Integraciones',
+    result: 'CRM, Wix y otros',
+    detail: 'Conectamos tu stack comercial y operativo para que todo hable entre si.',
+  },
+  {
+    name: 'Juegos',
+    result: 'Mobile y PC',
+    detail: 'Desarrollo e implementaciones multiplataforma para experiencias fluidas.',
   },
 ]
 
@@ -185,8 +190,8 @@ export default function Home() {
 
       <section className={styles.projects} id="casos">
         <div className={styles.sectionHead}>
-          <p>Casos destacados</p>
-          <h2>Resultados concretos en productos, e-commerce y operaciones</h2>
+          <p>Verticales</p>
+          <h2>Nuestras verticales</h2>
         </div>
         <div className={styles.projectsGrid}>
           {projects.map((item) => (
