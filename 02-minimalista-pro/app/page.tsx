@@ -74,27 +74,19 @@ const projects = [
     detail: 'Conectamos tu stack comercial y operativo para que todo hable entre si.',
   },
   {
-    name: 'Juegos',
+    name: 'Consultoria',
+    result: 'Servicios y asesoramiento',
+    detail: 'Realizamos un acompañamiento en base a tus necesidades',
+  },
+  {
+    name: 'Plataformas',
+    result: 'Arquitectura PaaS',
+    detail: 'De esta manera podes desarrollar, probar, desplegar y gestionar aplicaciones en la nube sin manejar la infraestructura subyacente.',
+  },
+  {
+    name: 'Games',
     result: 'Mobile y PC',
-    detail: 'Desarrollo e implementaciones multiplataforma para experiencias fluidas.',
-  },
-]
-
-const testimonials = [
-  {
-    company: 'Fintech regional',
-    quote: 'Nos dieron estructura, velocidad y criterio de producto en semanas.',
-    score: '5.0',
-  },
-  {
-    company: 'Travel scale-up',
-    quote: 'No solo entregaron disenio. Mejoraron conversion y claridad comercial.',
-    score: '4.9',
-  },
-  {
-    company: 'Servicios financieros',
-    quote: 'Una combinacion rara: profundidad tecnica con sensibilidad de negocio.',
-    score: '5.0',
+    detail: 'Desarrollo e implementaciones de juegos multiplataformas para experiencias mas fluidas.',
   },
 ]
 
@@ -117,7 +109,6 @@ export default function Home() {
             <li><a href="#capacidades">Capacidades</a></li>
             <li><a href="#proceso">Proceso</a></li>
             <li><a href="#casos">Casos</a></li>
-            <li><a href="#faq">FAQ</a></li>
           </ul>
           <a href="#contacto" className={styles.navCta}>Contactanos</a>
         </nav>
@@ -201,46 +192,6 @@ export default function Home() {
               <p>{item.detail}</p>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section className={styles.testimonials}>
-        <div className={styles.sectionHead}>
-          <p>Clientes</p>
-          <h2>Lo que dicen quienes trabajaron con nosotros</h2>
-        </div>
-        <div className={styles.testimonialGrid}>
-          {testimonials.map((item) => (
-            <article key={item.quote} className={styles.testimonialCard}>
-              <div>
-                <strong>{item.score}</strong>
-                <span>/ 5.0</span>
-              </div>
-              <p>&quot;{item.quote}&quot;</p>
-              <small>{item.company}</small>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="faq" className={styles.faq}>
-        <div className={styles.sectionHeader}>
-          <p>FAQ</p>
-          <h2>Preguntas frecuentes antes de empezar</h2>
-        </div>
-        <div className={styles.faqList}>
-          <details>
-            <summary>Cuanto tarda una landing completa?</summary>
-            <p>Entre 2 y 5 semanas segun complejidad, integraciones y cantidad de iteraciones.</p>
-          </details>
-          <details>
-            <summary>Pueden mejorar una landing que ya existe?</summary>
-            <p>Si. Hacemos auditoria, rediseno y optimizacion tecnica sin rehacer todo de cero.</p>
-          </details>
-          <details>
-            <summary>Trabajan con equipo interno del cliente?</summary>
-            <p>Si. Nos integramos con marketing y ventas para alinear mensaje, UX y conversion.</p>
-          </details>
         </div>
       </section>
 
