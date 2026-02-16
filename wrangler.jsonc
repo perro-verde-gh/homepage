@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "perro-verde-homepage",
+  "name": "homepage",
   "compatibility_date": "2026-02-16",
   "assets": {
     "directory": "./out"
